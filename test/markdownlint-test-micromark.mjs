@@ -7,10 +7,12 @@ import { newLineRe } from "../helpers/helpers.cjs";
 import { filterByPredicate, filterByTypes } from "../helpers/micromark-helpers.cjs";
 import { getEvents, parse } from "../lib/micromark-parse.mjs";
 
+const normalize = (/** @type {string} */ content) => content.split(newLineRe).join("\n");
+
 const testContent = new Promise((resolve, reject) => {
   fs
     .readFile("./test/every-markdown-syntax.md", "utf8")
-    .then((content) => content.split(newLineRe).join("\n"))
+    .then(normalize)
     .then(resolve, reject);
 });
 
@@ -94,7 +96,7 @@ test.suite(import.meta.url.replace(/^.*?\/(?<name>[^/]*)$/u, "$<name>"), () => {
 
   test("micromark directive extension syntax", async(t) => {
     t.plan(1);
-    const tokens = parse(await fs.readFile("./test/micromark-directive-extension-syntax.md", "utf8"));
+    const tokens = parse(normalize(await fs.readFile("./test/micromark-directive-extension-syntax.md", "utf8")));
     t.assert.snapshot(stringifySafe(tokens));
   });
 
