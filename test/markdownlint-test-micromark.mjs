@@ -92,4 +92,10 @@ test.suite(import.meta.url.replace(/^.*?\/(?<name>[^/]*)$/u, "$<name>"), () => {
     t.assert.deepEqual(byPredicate, byTypes);
   });
 
+  test("micromark directive extension syntax", async(t) => {
+    t.plan(1);
+    const tokens = parse(await fs.readFile("./test/micromark-directive-extension-syntax.md", "utf8"));
+    t.assert.snapshot(stringifySafe(tokens));
+  });
+
 });

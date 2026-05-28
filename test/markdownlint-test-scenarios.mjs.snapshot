@@ -34993,6 +34993,13 @@ exports[`markdownlint-test-scenarios.mjs > md052-invalid-range-bug.md 1`] = `
 }
 `;
 
+exports[`markdownlint-test-scenarios.mjs > micromark-directive-extension-syntax.md 1`] = `
+{
+  "errors": [],
+  "fixed": "# micromark Directive Extension Syntax\\n\\n## Inline\\n\\n### Valid\\n\\n:name[content]{key=val}\\n\\n:name[content]\\n\\n:name{key=val}\\n\\n:name\\n\\nprefix:name\\n\\n## Leaf Block\\n\\n### Valid\\n\\n::name[content]{key=val}\\n\\n::name[content]\\n\\n::name{key=val}\\n\\n::name\\n\\n### Invalid\\n\\nprefix::name\\n\\n## Container Block\\n\\n### Valid\\n\\n:::name[inline-content]{key=val}\\ncontents\\n:::\\n\\n:::name[inline-content]\\ncontents\\n:::\\n\\n:::name{key=val}\\ncontents\\n:::\\n\\n:::name\\ncontents\\n:::\\n\\n### Invalid\\n\\nprefix:::name[inline-content]{key=val}\\ncontents\\n:::\\n\\n<!-- markdownlint-configure-file { \\"no-duplicate-heading\\": false } -->\\n"
+}
+`;
+
 exports[`markdownlint-test-scenarios.mjs > micromark-regressions.md 1`] = `
 {
   "errors": [],
